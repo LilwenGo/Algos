@@ -103,4 +103,37 @@ function ex4_8 () {
     }
 }
 
-ex4_8()
+function ex5_2 () {
+    let n = Math.floor(Math.random() * 20)
+    let r = 0
+    do {
+        n = Math.floor(Math.random() * 20)
+    } while(n < 10)
+    while(r !== n) {
+        r = prompt("Donnez un nombre") * 1
+        if(r < 10) {
+            alert('Plus Grand !')
+        } else if(r > 20) {
+            alert('Plus Petit !')
+        }
+    }
+}
+
+function ex5_4 () {
+    let r = prompt("Donnez un nombre")
+    console.log(`Table de ${r}`)
+    for(let i = 1;i < 11;i++) {
+        console.log(`${r} x ${i} = ${r * i}`)
+    }
+}
+
+function ex5_6 () {
+    let r = prompt("Donnez un nombre")
+    let fact = 1
+    for(let i = r;i > 0;i--) {
+        fact *= i
+    }
+    alert(`Le resultat est ${fact}`)
+}
+
+ex5_6()
