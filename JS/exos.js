@@ -136,4 +136,23 @@ function ex5_6 () {
     alert(`Le resultat est ${fact}`)
 }
 
-ex5_6()
+function ex5_8 () {
+    let bignum = 0
+    let num = 0
+    let bigpos = 0
+    let pos = 1
+    do {
+        num = prompt("Donnez un nombre") * 1
+        if(num > bignum) {
+            bignum = num
+            bigpos = pos
+        }
+        if(num == 0 && 0 >= bignum) {
+            bigpos = pos
+        }
+        pos++
+    } while(num !== 0)
+    alert(`Plus grand nombre: ${bignum} entré en ${bigpos}e position.`) 
+}
+
+ex5_8()
