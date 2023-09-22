@@ -155,4 +155,51 @@ function ex5_8 () {
     alert(`Plus grand nombre: ${bignum} entré en ${bigpos}e position.`) 
 }
 
-ex5_8()
+function ex6_10 () {
+    let arr1 = []
+    let arr2 = []
+    let arr3 = []
+    for(let i = 0;i < (Math.round(Math.random() * 10));i++) {
+        arr1.push(Math.round(Math.random() * 100))
+        arr2.push(Math.round(Math.random() * 100))
+        arr3.push(arr1[i] + arr2[i])
+    }
+    console.log(arr1, arr2, arr3)
+}
+
+function ex6_11 () {
+    let arr1 = []
+    let arr2 = []
+    let shtroumf = 0
+    for(let i = 0;i < (Math.round(Math.random() * 10));i++) {
+        arr1.push(Math.round(Math.random() * 100))
+    }
+    for(let i = 0;i < (Math.round(Math.random() * 10));i++) {
+        arr2.push(Math.round(Math.random() * 100))
+    }
+    for(let i = 0;i < arr2.length;i++) {
+        for(let j = 0;j < arr1.length;j++) {
+            shtroumf = shtroumf + (arr2[i] * arr1[j])
+        }
+    }
+    console.log(arr1, arr2, shtroumf)
+}
+
+function ex6_12 () {
+    let notes = []
+    let sommenotes = 0
+    let notessup = []
+    for(let i = 0;i < 30;i++) {
+        notes.push(Math.round(Math.random() * 20))
+        sommenotes = sommenotes + notes[i]
+    }
+    let moyenne = Math.round(sommenotes/notes.length)
+    for(let i = 0;i < notes.length;i++) {
+        if(notes[i] > moyenne) {
+            notessup.push(notes[i])
+        }
+    }
+    console.log(`Notes: ${notes}, Moyenne: ${moyenne}, Notes supérieures à la moyenne: ${notessup}`)
+}
+
+ex6_12()
