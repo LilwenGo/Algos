@@ -202,4 +202,62 @@ function ex6_12 () {
     console.log(`Notes: ${notes}, Moyenne: ${moyenne}, Notes supérieures à la moyenne: ${notessup}`)
 }
 
-ex6_12()
+function dé () {
+    return Math.ceil(Math.random() * 6)
+}
+
+function testdé () {
+    const a = dé()
+    const b = dé()
+    const c = dé()
+    if(a + b + c == 7 && a * b * c == 8) {
+        console.log(`${"" + a + b + c} a bien les nombres 4, 2 et 1`)
+    } else {
+        console.log(`${"" + a + b + c} n'a pas les nombres 4, 2 et 1`)
+    }
+}
+
+function pgcd() {
+    let a = prompt("Donnez un premier nombre")
+    let b = prompt("Donnez un deuxième nombre")
+    let arr1 = []
+    let arr2 = []
+    for(let i = 0;i <= a;i++) {
+        if(a%i == 0) {
+            arr1.push(i)
+        }
+    }
+    for(let i = 0;i <= b;i++) {
+        if(b%i == 0) {
+            arr2.push(i)
+        }
+    }
+    console.log(`${arr1}`)
+    console.log(`${arr2}`)
+}
+
+function algoSS() {
+    let a = parseInt(prompt("Donnez un premier nombre"))
+    let b = parseInt(prompt("Donnez un deuxième nombre"))
+    let c = 0
+    do {
+        c = a - b
+        a = b
+        b = c
+        console.log(c)
+    } while (c !== 0)
+}
+
+function algoEuclide() {
+    let a = parseInt(prompt("Donnez un premier nombre"))
+    let b = parseInt(prompt("Donnez un deuxième nombre"))
+    let c = 0
+    do {
+        c = a%b
+        a = b
+        b = c
+        console.log(c)
+    } while (c !== 0)
+}
+
+pgcd()
