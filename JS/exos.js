@@ -241,9 +241,15 @@ function algoSS() {
     let b = parseInt(prompt("Donnez un deuxième nombre"))
     let c = 0
     do {
-        c = a - b
-        a = b
-        b = c
+        if(a > b) {
+            c = a - b
+            a = b
+            b = c
+        } else {
+            c = b - a
+            a = b
+            b = c
+        }
         console.log(c)
     } while (c !== 0)
 }
@@ -251,13 +257,38 @@ function algoSS() {
 function algoEuclide() {
     let a = parseInt(prompt("Donnez un premier nombre"))
     let b = parseInt(prompt("Donnez un deuxième nombre"))
+    // Soit a un premier nombre et b un deuxième plus petit que a
     let c = 0
     do {
         c = a%b
+        // c deviens le reste de a : b
         a = b
         b = c
         console.log(c)
-    } while (c !== 0)
+    } while (c !== 0 || c !== NaN)
+    // Repeter tant que reste !null
 }
 
-pgcd()
+function cesar() {
+    let nombre = parseInt(prompt("Donnez un nombre"))
+    let mot = ""
+    do {
+        mot = prompt("Donnez un mot")
+    } while(mot.length == 0)
+    let tableau = mot.split("")
+    for(let i = 0;i < tableau.length;i++) {
+        let ascii = mot.charCodeAt(i)
+        if((ascii + (nombre%26)) > 90 && (ascii + (nombre%26)) < 97 || (ascii + (nombre%26)) > 122) {
+            ascii -= 26
+        }
+        if ((ascii + (nombre%26)) < 65 || (ascii + (nombre%26)) > 122) {
+            ascii = 65 - nombre%26
+        }
+        ascii += nombre%26
+        tableau[i] = String.fromCharCode(ascii)
+    }
+    console.log(mot)
+    console.log(tableau.join(""))
+}
+
+cesar()
