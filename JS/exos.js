@@ -291,4 +291,86 @@ function cesar() {
     console.log(tableau.join(""))
 }
 
-cesar()
+function cesarOlivier() {
+    let amount = parseInt(prompt("Donnez un nombre"))
+    let str = ""
+    do {
+        str = prompt("Donnez un mot")
+    } while(str.length == 0)
+    if (amount < 0)
+    return cesar(str, amount + 26);
+  
+    // variable pour stocker le résultat
+    var res = '';
+    // Parcourir chaque caractére
+    for (var i = 0; i < str.length; i++) {
+        // Récupérer le caractére que nous allons ajouter
+        var c = str[i];
+        // Vérifier si c'est une lettre
+        if (c.match(/[a-z]/i)) {
+        // Récupérer son code
+        var code = str.charCodeAt(i);
+        // Lettres majuscules
+        if ((code >= 65) && (code <= 90))
+            c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
+        // Lettres minuscules
+        else if ((code >= 97) && (code <= 122))
+            c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
+        }
+        // Ajouter le caractére
+        res += c;
+    }
+    // Résultat
+
+    console.log(str, res);
+}
+
+function dycotomie(tab, n) {
+    let a = 0;
+    let b = tableau.length - 1;
+    let m = Math.ceil((a+b)/2);
+    while(a < b) {
+        if(tab[m] == n) {
+            a = m;
+            break;
+        } else if(tab[m] > n) {
+            b = m-1;
+        } else {
+            a = m+1;
+        }
+        m = Math.ceil((a+b)/2);
+    }
+    if(tab[m] == n) {
+        console.log(`Le nombre ${n} est à la position ${m + 1} dans le tableau ${tab}`);
+    } else {
+        console.log(`Le nombre n'a pas été trouvé`)
+    }
+    return null;
+}
+
+function isogramme(str) {
+    let ponctuation = [" ", ",", ".", ";", ":", "!", "?", "&", "\"", "'", "~", "#", "{", "}", "(", ")", "[", "]", "-", "_", "`", "|", ];
+    let voyelles = [["a", "à", "á", "â", "ä"], ["e", "é", "è", "ê", "ë"], ["i", "ì", "í", "î", "ï"], ["o", "ò", "ó", "ô", "ö"], ["u", "ù", "ú", "û", "ü"]];
+    for(let i = 0;i < str.length;i++) {
+        if(ponctuation.indexOf(str[i]) != -1) {
+            continue;
+        } else {
+            for(let j = 0;j < voyelles.length;j++) {
+                if(voyelles[j].indexOf(str[i]) != -1) {
+                    for(let k = 0;k < voyelles[j].length;k++) {
+                        if(str.indexOf(voyelles[j][k], i+1) != -1) {
+                            return "non";
+                        }
+                    }
+                }
+            }
+            if(str.indexOf(str[i], i+1) != -1) {
+                return "non";
+            }
+        }
+    }
+    return "oui";
+}
+
+let str = prompt("Donnez une phrase");
+console.log(str + " : " + isogramme(str));
